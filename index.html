@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Rogue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #0f172a; /* slate-900 */
+        color: white;
+        margin: 0;
+        overflow: hidden; /* Prevent scrolling on mobile during swipes */
+        user-select: none;
+      }
+
+      .special-fire { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+      .special-lightning { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+      .special-star { box-shadow: 0 0 15px rgba(234, 179, 8, 0.4); }
+
+      @keyframes floatUpFade {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -100px) scale(1.5);
+        }
+      }
+      .combat-text-anim {
+        animation: floatUpFade 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        will-change: transform, opacity;
+      }
+
+      /* Ultimate Effects */
+      @keyframes ult-pop {
+        0% { transform: scale(0); opacity: 0; }
+        50% { transform: scale(2); opacity: 1; }
+        100% { transform: scale(3); opacity: 0; }
+      }
+      .ult-anim { animation: ult-pop 0.6s ease-out forwards; }
+      
+      @keyframes screen-flash {
+        0% { opacity: 0; }
+        50% { opacity: 0.6; }
+        100% { opacity: 0; }
+      }
+      .ult-flash { animation: screen-flash 0.6s ease-out forwards; }
+
+      /* Modal Pop-in Animation */
+      @keyframes modal-pop {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .modal-anim { animation: modal-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@11.15.0?external=react,react-dom"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
